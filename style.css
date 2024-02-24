@@ -544,3 +544,66 @@ input[type='radio'] {
         align-items: center;
     }
 }
+
+/* Receipt Page Specific Styles */
+.receipt-container, .receipt-container header, .receipt-container main, .receipt-container section {
+    width: 100%;
+    max-width: 210mm;
+    margin: auto;
+    padding: 0;
+    page-break-after: always;
+}
+
+.receipt-container .ticket {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* Adjust spacing between sections specifically for the receipt page */
+.receipt-container section {
+    padding: 10px 0; 
+    margin-bottom: 20px; 
+}
+
+.receipt-container *, .receipt-container *:before, .receipt-container *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* This ensures padding does not add to the total width */
+}
+
+.receipt-container h1, .receipt-container h2, .receipt-container p {
+    line-height: 1.2; /* Adjust this value as needed */
+}
+
+.receipt-container section {
+    margin-bottom: 10px; /* Reduced from 20px */
+}
+
+.receipt-container table {
+    width: 100%;
+    border-collapse: collapse; /* This removes any default spacing between borders */
+}
+
+.receipt-container table, .receipt-container th, .receipt-container td {
+    border: 1px solid black; /* Example border, adjust as needed */
+    padding: 5px; /* Reduced padding */
+}
+
+.receipt-container th, .receipt-container td {
+    text-align: left;
+}
+
+/* Print-specific styles */
+@media print {
+    body, .receipt-container, .ticket {
+        background-color: #fff;
+        color: black;
+    }
+    nav, footer, .non-printable {
+        display: none;
+    }
+    .receipt-container {
+        box-shadow: none;
+    }
+    
+}

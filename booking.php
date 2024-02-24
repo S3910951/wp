@@ -1,5 +1,5 @@
 <?php 
-include('tools.php');
+include_once('tools.php');
 $title = "Booking";
 $lastModTime = filemtime("style.css"); 
 
@@ -19,7 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $postedData = $_POST;
 
-
+        if (isset($selectedMovie['screenings'][$postedData['day']])) {
+            $postedData['time'] = $selectedMovie['screenings'][$postedData['day']]['time'];
+        } else {
+            $postedData['time'] = 'Unknown'; 
+        }
+    
     $totalPrice = 0;
     $seatQuantities = []; 
     $seatSubtotals = []; 
@@ -86,45 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 }
 
-function getSeatPrice($seatType, $day, $time, $movieCode) {
 
-    $basePrices = [
-        'STA' => 21.50, // Standard Adult
-        'STP' => 19.00, // Standard Concession
-        'STC' => 17.50, // Standard Child
-        'FCA' => 31.00, // First Class Adult
-        'FCP' => 28.00, // First Class Concession
-        'FCC' => 25.00, // First Class Child
-    ];
 
-    $discountedPrices = [
-        'STA' => 16.00,
-        'STP' => 14.50,
-        'STC' => 13.00,
-        'FCA' => 25.00,
-        'FCP' => 23.50,
-        'FCC' => 22.00,
-    ];
 
-    $weekdays = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
-    $isWeekday = in_array($day, $weekdays);
-
-    $isAfternoon = isAfternoon($time);
-
-    if ($isWeekday && $isAfternoon) {
-        $price = $discountedPrices[$seatType] ?? 0;
-    } else {
-        $price = $basePrices[$seatType] ?? 0;
-    }
-
-    return $price;
-}
-
-// Helper function to determine if the time is after 12pm
-function isAfternoon($time) {
-    $timeIn24Hour = date("H", strtotime($time));
-    return $timeIn24Hour >= 12;
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
