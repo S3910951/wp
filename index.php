@@ -120,6 +120,13 @@
         
     </main>
     <footer>
+        <div class="footer-form">
+            <form action="currentbookings.php" method="post">
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="mobile" placeholder="Your Mobile Number" required>
+                <button type="submit">Retrieve Booking</button>
+            </form>
+        </div>
         <p>Contact us at lunardo@cinema.com | (07) 1234 5678</p>
         <p>123 Cinema Street, Townsville</p>
         <div>&copy;<script>

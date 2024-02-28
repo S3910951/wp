@@ -93,11 +93,21 @@ if (!$selectedMovie || !isset($postedData['day'])) {
                     </tr>
                 </table>
                 <!-- Generate tickets -->
+                <!-- Generate tickets -->
                 <?php foreach ($_SESSION['posted_data']['seats'] as $seatType => $quantity): ?>
                     <?php for ($i = 0; $i < $quantity; $i++): ?>
                         <div class="ticket">
                             <!-- Ticket content-->
-                            <p>Ticket <?= $i + 1; ?> of <?= $quantity; ?> for <?= $seatType; ?></p>
+                            <h3><?= htmlspecialchars($selectedMovie['title']); ?> - Ticket <?= $i + 1; ?> of <?= $quantity; ?></h3>
+                            <p>Seat Type: <?= htmlspecialchars(getSeatTypeName($seatType)); ?></p>
+                            <p>Screening Day: <?= htmlspecialchars($postedData['day']); ?></p>
+                            <p>Screening Time: <?= htmlspecialchars($postedData['time']); ?></p>
+                            <div class="ticket-footer">
+                                Enjoy the show!
+                            </div>
+                            <div class="qr-code">
+                                <img src="QR_Code.png" alt="QR Code" style="width: 100px; height: 100px;">
+                            </div>
                         </div>
                     <?php endfor; ?>
                 <?php endforeach; ?>

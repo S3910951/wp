@@ -559,7 +559,7 @@ input[type='radio'] {
     break-inside: avoid;
 }
 
-/* Adjust spacing between sections specifically for the receipt page */
+
 .receipt-container section {
     padding: 10px 0; 
     margin-bottom: 20px; 
@@ -568,29 +568,91 @@ input[type='radio'] {
 .receipt-container *, .receipt-container *:before, .receipt-container *:after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* This ensures padding does not add to the total width */
+    box-sizing: border-box; 
 }
 
 .receipt-container h1, .receipt-container h2, .receipt-container p {
-    line-height: 1.2; /* Adjust this value as needed */
+    line-height: 1.2; 
 }
 
 .receipt-container section {
-    margin-bottom: 10px; /* Reduced from 20px */
+    margin-bottom: 10px;
 }
 
 .receipt-container table {
     width: 100%;
-    border-collapse: collapse; /* This removes any default spacing between borders */
+    border-collapse: collapse; 
 }
 
 .receipt-container table, .receipt-container th, .receipt-container td {
-    border: 1px solid black; /* Example border, adjust as needed */
-    padding: 5px; /* Reduced padding */
+    border: 1px solid black;
+    padding: 5px;
 }
 
 .receipt-container th, .receipt-container td {
     text-align: left;
+}
+
+.ticket {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    page-break-inside: avoid;
+    width: 300px;
+    page-break-after: always;
+}
+
+.ticket::before, .ticket::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100%;
+    background: repeating-linear-gradient(90deg, #fff 0, #fff 4px, transparent 4px, transparent 8px); 
+}
+
+.ticket::before {
+    left: -10px;
+}
+
+.ticket::after {
+    right: -10px;
+}
+
+.ticket p {
+    margin: 5px 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #333;
+}
+
+.ticket-header, .ticket-footer {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.ticket .movie-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+.ticket .movie-time {
+    font-size: 16px;
+    color: #555;
+}
+
+.ticket .qr-code {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.ticket .qr-code img {
+    width: 80px;
+    height: auto;
 }
 
 /* Print-specific styles */
@@ -603,6 +665,11 @@ input[type='radio'] {
         display: none;
     }
     .receipt-container {
+        box-shadow: none;
+    }
+
+    .ticket {
+        page-break-inside: avoid;
         box-shadow: none;
     }
     
