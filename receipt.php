@@ -39,8 +39,6 @@ if (!$selectedMovie || !isset($postedData['day'])) {
                 <p>Name: <?= $_SESSION['posted_data']['customer']['name']; ?></p>
                 <p>Email: <?= $_SESSION['posted_data']['customer']['email']; ?></p>
                 <p>Mobile: <?= $_SESSION['posted_data']['customer']['mobile']; ?></p>
-            </section>
-            <section>
                 <!-- Booking summary -->
                 <table>
                     <!-- Table headers -->
@@ -92,7 +90,8 @@ if (!$selectedMovie || !isset($postedData['day'])) {
                         <td>$<?= number_format($gst, 2); ?></td>
                     </tr>
                 </table>
-                <!-- Generate tickets -->
+            </section>
+            <section>
                 <!-- Generate tickets -->
                 <?php foreach ($_SESSION['posted_data']['seats'] as $seatType => $quantity): ?>
                     <?php for ($i = 0; $i < $quantity; $i++): ?>

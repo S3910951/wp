@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><strong>Time of Movie:</strong> <?= htmlspecialchars($booking[6]); ?></p>
                     <form action="receipt.php" method="post">
                         <input type="hidden" name="bookingData" value="<?= base64_encode(serialize($booking)); ?>">
-                        <button type="submit">View Receipt</button>
+                        <button type="submit" class="link-button">View Receipt</button>
                     </form>
                 </div>
             <?php endforeach; ?>
